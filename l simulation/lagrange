@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Lagrange Points</title>
+    <link rel="stylesheet" href="lagrange.css" type="text/css">
+  </head>
+
+  <body>
+    <div class="canvas">
+    <canvas id="glcanvas"></canvas>
+    </div>
+    <div class="sidebar">
+      <select id="systemSelect" onchange="reset()">
+        <option value="earthMoon">System: Earth/Moon</option>
+        <option value="sunEarth">System: Sun/Earth</option>
+        <option value="sunJupiter">System: Sun/Jupiter</option>
+        <option value="plutoCharon">System: Pluto/Charon</option>
+        <option value="custom">System: Custom</option>
+      </select><br>
+      <select id="exampleSelect" onchange="reset()">
+        <option value="1">Example: L1</option>
+        <option value="2">Example: L2</option>
+        <option value="3">Example: L3</option>
+        <option value="4">Example: L4</option>
+        <option value="5">Example: L5</option>
+        <option value="orbitEarth" id="orbitEarth">Example: Orbiting Earth</option>
+        <option value="orbitMoon" id="orbitMoon">Example: Orbiting Moon</option>
+        <option value="tadpole">Example: Tadpole Orbit</option>
+        <option value="horseshoe" id="horseshoe">Example: Horseshoe Orbit</option>
+      </select><br>
+      <button id="reset" onclick="reset()">Reset</button><br>
+      <button id="forward">Thrust Forward</button>
+      <button id="backward">Thrust Backward</button>
+      <button id="inward">Thrust Inward</button>
+      <button id="outward">Thrust Outward</button><br>
+      <button id="zoomin">Zoom In</button>
+      <button id="zoomout">Zoom Out</button><br>
+      Simulation speed:
+      <input type="range" min="1" max="130" value="68" class="slider" id="speed">
+      <br>
+      Mass ratio:
+      <input type="range" min="0" max="100" value="50" class="slider" id="massRatioSlider"
+             oninput="reset()">
+      <br>
+      Stopped: <input type="checkbox" id="stoppedCheck">
+      <br>
+      Draw to Scale: <input type="checkbox" id="toScaleCheck">
+      <br>
+      <span id="ignoreBody2Label">Ignore Body 2 Gravity:</span> <input type="checkbox" id="ignoreBody2">
+      <br>
+      <span id="showOrbitLabel">Show Body 2 Orbit:</span> <input type="checkbox" id="showOrbit" checked>
+      <br>
+      Show Effective Potential: <input type="checkbox" id="showPotential">
+      <br>
+      Reference frame:
+      <select id="viewFrame">
+        <option value="fixed">Fixed</option>
+        <option value="rotating">Rotating</option>
+        <option value="ship">Ship</option>
+        <option id="viewFrameBody2" value="body2">Moon</option>
+      </select>
+      <br>
+      &nbsp;<br>
+      <div id="values">
+      One rotation per ...<br>
+      Particle speed: 123 m/s<br>
+      Coriolis accel: 123 m/s^2<br>    
+      t = ...<br>
+      </div>
+      <br>
+      <span style="color:red">L1</span>
+      <span style="color:orange;background-color:black;">L2</span>
+      <span style="color:yellow;background-color:black;">L3</span>
+      <span style="color:green">L4</span>
+      <span style="color:blue">L5</span>
+      <span style="color:cyan;background-color:black;">barycenter</span>
+      <br>
+      Planet texture maps from <a href="http://planetpixelemporium.com/">planetpixelemporium.com</a>,
+      Pluto texture from
+      <a href="https://www.deviantart.com/fargetanik/art/Pluto-Texture-Map-16k-643938442">FarGetaNik</a>.
+      Charon texture from
+      <a href="https://www.deviantart.com/neptuneprogaming/art/Charon-Texture-Map-713509325">NeptuneProGaming</a>.
+      Explosion texture from <a href="textures4photoshop.com">textures4photoshop.com</a>.
+    </div>
+  </body>
+
+  <script src="../gl-matrix.js"></script>
+  <script src="webgl-obj-loader.min.js"></script>
+  <script src="lagrange.js"></script>
+</html>
