@@ -9,9 +9,8 @@ R_earth_moon = 3.84e8
 
 # Function to calculate Lagrange point L1
 def lagrange_point_l1(moonlet_mass, distance_earth_moon):
-    r1 = (M_moon * R_earth_moon) / (M_earth + M_moon)
-    r_l1 = distance_earth_moon * (M_earth / (3 * M_earth + moonlet_mass))**(1/3)
-    return r1 + r_l1
+    r_l1 = distance_earth_moon * (M_earth / (3 * (M_earth + moonlet_mass)))**(1/3)
+    return r_l1
 
 # Function to calculate orbital parameters at Lagrange point L1
 def calculate_orbital_parameters(moonlet_mass, distance_earth_moon):
