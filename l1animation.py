@@ -31,6 +31,7 @@ angular_velocity, period, speed, r_l1 = calculate_orbital_parameters(moonlet_mas
 fig, ax = plt.subplots(figsize=(10, 10))
 
 # Plot the Earth (scaled down for better visualization)
+
 earth_circle = plt.Circle((0, 0), R_earth_moon / (5 * (1 + M_moon/M_earth)), color='blue', label='Earth')
 ax.add_patch(earth_circle)
 
