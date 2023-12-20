@@ -2,56 +2,60 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Constants
-G = 6.67e-11
-M_earth = 5.97e24
-M_moon = 7.35e22
-R_earth_moon = 3.84e8
+GRAVITATIONAL_CONSTANT = 6.67e-11
+EARTH_MASS = 5.97e24
+MOON_MASS = 7.35e22
+EARTH_MOON_DISTANCE = 3.84e8
 
-# Function to calculate Lagrange point L2
+# Function to calculate Lagrange point L1
 def lagrange_point_l2(moonlet_mass, distance_earth_moon):
-    r_l2 = R_earth_moon * ((M_earth / (3 * (M_earth + M_moon)))**(1/3))
-    return r_l2  # Adding the distance to the Moon to position L2 on the opposite side
+    r_l2 = distance_earth_moon * ((EARTH_MASS + moonlet_mass) / (3 * MOON_MASS))**(1 / 3)
+    return r_l2
 
-# Function to calculate orbital parameters at Lagrange point L2
-def calculate_orbital_parameters_l2(moonlet_mass, distance_earth_moon):
+# Function to calculate orbital parameters at Lagrange point L1
+def calculate_orbital_parameters(moonlet_mass, distance_earth_moon):
     r_l2 = lagrange_point_l2(moonlet_mass, distance_earth_moon)
-    omega = np.sqrt(G * (M_earth + moonlet_mass) / r_l2**3)
+
+    omega = np.sqrt(GRAVITATIONAL_CONSTANT * (MOON_MASS + moonlet_mass) / r_l2**3)
     orbital_period = 2 * np.pi / omega
     orbital_speed = omega * r_l2
+
     return omega, orbital_period, orbital_speed, r_l2
 
 # Example values
 moonlet_mass = 1e18
 
-# Calculate orbital parameters at Lagrange point L2
-angular_velocity, period, speed, r_l2 = calculate_orbital_parameters_l2(moonlet_mass, R_earth_moon)
+# Calculate orbital parameters at Lagrange point L1
+angular_velocity, period, speed, r_l2 = calculate_orbital_parameters(moonlet_mass, EARTH_MOON_DISTANCE)
 
 # Plotting
 fig, ax = plt.subplots(figsize=(10, 10))
 
-# Plot the Earth (scaled down for better visualization)
-earth_circle = plt.Circle((0, 0), R_earth_moon / (5 * (1 + M_moon/M_earth)), color='blue', label='Earth')
+# Plot the Earth
+earth_circle = plt.Circle((0, 0), EARTH_MOON_DISTANCE / (5 * (1 + MOON_MASS / EARTH_MASS)), color='blue', label='Earth')
 ax.add_patch(earth_circle)
 
-l2 = lagrange_point_l2(moonlet_mass, R_earth_moon)
-
 # Plot the Moon
-moon_circle = plt.Circle((R_earth_moon, 0), R_earth_moon / (1 + M_earth/M_moon), color='gray', label='Moon')
+moon_circle = plt.Circle((EARTH_MOON_DISTANCE, 0), EARTH_MOON_DISTANCE / (1 + EARTH_MASS / MOON_MASS), color='gray', label='Moon')
 ax.add_patch(moon_circle)
 
-# Plot the Lagrange point L2 (slightly bigger for better visibility)
-l2_point = plt.Circle((r_l2, 0), 2e6, color='red', label='L2 Point')  # Increased the size of L2 Point
-ax.add_patch(l2_point)
+# Plot the Lagrange point L2
+l1_point_size = 2e6
+l1_point = plt.Circle((r_l2, 0), l1_point_size, color='red', label='L2 Point')
+ax.add_patch(l1_point)
 
-# Plot the moonlet orbiting around L2 (made smaller for better visual distinction)
-moonlet_x = r_l2 * np.cos(0)
-moonlet_y = r_l2 * np.sin(0)
-moonlet = plt.Circle((moonlet_x, moonlet_y), 5e5, color='green', label='Moonlet')  # Adjusted the size of Moonlet
-ax.add_patch(moonlet)
+# Plot the moonlet orbiting around L1
+theta = np.linspace(0, 2 * np.pi, 100)
+moonlet_x = r_l2 * np.cos(theta)
+moonlet_y = r_l2 * np.sin(theta)
+moonlet = plt.plot(moonlet_x, moonlet_y, color='green', label='Moonlet Orbit')
 
-ax.set_xlim(-1.5 * R_earth_moon, 1.5 * R_earth_moon)
-ax.set_ylim(-1.5 * R_earth_moon, 1.5 * R_earth_moon)
+# Set labels and legend
+ax.set_xlim(-1.5 * EARTH_MOON_DISTANCE, 1.5 * EARTH_MOON_DISTANCE)
+ax.set_ylim(-1.5 * EARTH_MOON_DISTANCE, 1.5 * EARTH_MOON_DISTANCE)
+ax.set_xlabel('X Position (m)')
+ax.set_ylabel('Y Position (m)')
 ax.set_aspect('equal', 'box')
-plt.title("Earth, Moon, Lagrange Point L2, and Moonlet")
+plt.title("Earth, Moon, Lagrange Point L2, and Moonlet Orbit")
 plt.legend()
 plt.show()
