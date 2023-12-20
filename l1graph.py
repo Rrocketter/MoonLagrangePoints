@@ -21,7 +21,7 @@ def calculate_orbital_parameters(moonlet_mass, distance_earth_moon):
     return omega, orbital_period, orbital_speed, r_l1
 
 # Example values
-moonlet_mass = 1e15
+moonlet_mass = 1e18
 
 # Calculate orbital parameters at Lagrange point L1
 angular_velocity, period, speed, r_l1 = calculate_orbital_parameters(moonlet_mass, R_earth_moon)

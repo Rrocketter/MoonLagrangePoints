@@ -8,7 +8,7 @@ R_earth_moon = 3.84e8  # Distance between Earth and Moon in meters
 
 # Function to calculate Lagrange point L2
 def lagrange_point_l2(moonlet_mass, distance_earth_moon):
-    r_l2 = R_earth_moon * ((M_earth / (3 * (M_earth + M_moon)))**(1/3))
+    r_l2 = distance_earth_moon * ((M_earth + moonlet_mass) / (3 * M_moon))**(1/3)
     return r_l2
 
 # Function to calculate orbital parameters at Lagrange point L2
@@ -16,7 +16,7 @@ def calculate_orbital_parameters_l2(moonlet_mass, distance_earth_moon):
     r_l2 = lagrange_point_l2(moonlet_mass, distance_earth_moon)
 
     # Centripetal acceleration formula: ac = w^2 * r
-    omega = np.sqrt(G * (M_earth + moonlet_mass) / r_l2**3)  # Angular velocity
+    omega = np.sqrt(G * (M_moon + moonlet_mass) / r_l2**3)  # Angular velocity
     orbital_period = 2 * np.pi / omega  # Orbital period
     orbital_speed = omega * r_l2  # Orbital speed
 
