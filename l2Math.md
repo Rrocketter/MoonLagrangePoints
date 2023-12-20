@@ -5,7 +5,7 @@
 
 The position of Lagrange point L2 is determined by finding a point along the line connecting the two massive bodies (Earth and Moon), beyond the smaller object (Moon). The formula for the distance to Lagrange point L2 is given by:
 
-<img src="http://www.sciweavers.org/tex2img.php?eq=%5C%5B%20r_%7BL2%7D%20%3D%20R_%7B%5Ctext%7BEarth-Moon%7D%7D%20%5Ccdot%20%5Cleft%28%20%5Cfrac%7BM_%7B%5Ctext%7BEarth%7D%7D%7D%7B3%20%5Ccdot%20%28M_%7B%5Ctext%7BEarth%7D%7D%20%2B%20M_%7B%5Ctext%7BMoon%7D%7D%29%7D%20%5Cright%29%5E%7B1%2F3%7D%20%5C%5D%0A&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="\[ r_{L2} = R_{\text{Earth-Moon}} \cdot \left( \frac{M_{\text{Earth}}}{3 \cdot (M_{\text{Earth}} + M_{\text{Moon}})} \right)^{1/3} \]" width="344" height="50" />
+![img_22.png](img_22.png)
 
 This formula is derived from the gravitational forces and accelerations acting on the smaller object (Moonlet) due to the Earth and Moon.
 
