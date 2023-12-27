@@ -1,7 +1,4 @@
-// lagrange.js (C) 2020 by Paul Falstad
 
-// explosion texture from http://www.textures4photoshop.com/
-// thanks to Aaron Boman for the obj loading code.
 
 "use strict";
 
