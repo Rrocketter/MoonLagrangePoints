@@ -1,46 +1,36 @@
+# Lagrange Point 5 (L5) Calculation
 
-## Derivation of Lagrange Point L5 Coordinates
 
-### Assumptions and Definitions:
-- \(M_{\text{earth}}\) and \(M_{\text{moon}}\) are the masses of Earth and the Moon, respectively.
-- \(R_{\text{earth-moon}}\) is the distance between the centers of the Earth and the Moon.
+## Lagrange Point 5 Coordinates
 
-### Equilateral Triangle Configuration:
-Lagrange points L4 and L5 form an equilateral triangle with the Earth and the Moon. 
+The coordinates of Lagrange Point 5 (L5) in a Cartesian coordinate system are calculated using the following equations:
 
-### Coordinate System:
-Let's set up a coordinate system with the origin at the center of mass between the Earth and the Moon, and the x-axis pointing from the Earth to the Moon.
+\[ x_{L5} = 0.5 \times R_{\text{Earth-Moon}} \]
 
-### Position of Lagrange Point L5:
-L5 is located in the third quadrant (negative x and negative y) of the coordinate system.
+\[ y_{L5} = -\frac{\sqrt{3}}{2} \times R_{\text{Earth-Moon}} \]
 
-1. **x-Coordinate (\(x_{\text{L5}})\):**
-   - L5 is situated along the line connecting the centers of the Earth and the Moon.
-   - The x-coordinate of L5 is a distance of \(R_{\text{earth-moon}}/2\) in the negative x-direction.
+Here, 
+- \( R_{\text{Earth-Moon}} \) is the distance between the Earth and the Moon.
+- \( x_{L5} \) is the x-coordinate of L5.
+- \( y_{L5} \) is the y-coordinate of L5.
 
-   \[ x_{\text{L5}} = -\frac{1}{2} R_{\text{earth-moon}} \]
+## Orbital Parameters at Lagrange Point 5
 
-2. **y-Coordinate (\(y_{\text{L5}})\):**
-   - L5 is also displaced in the positive y-direction relative to the center of mass.
-   - The y-coordinate of L5 is given by \(\frac{\sqrt{3}}{2} R_{\text{earth-moon}}\), forming an equilateral triangle.
+Once the coordinates of L5 are determined, various orbital parameters at this point can be calculated. The radial distance from L5 to the combined center of mass of the Earth and Moon (\( r_{L5} \)) is computed using the distance formula:
 
-   \[ y_{\text{L5}} = \frac{\sqrt{3}}{2} R_{\text{earth-moon}} \]
+\[ r_{L5} = \sqrt{x_{L5}^2 + y_{L5}^2} \]
 
-### Solving for the X,Y coordinates of Lagrange Point L5:
+Next, the angular velocity (\( \omega \)) is determined using the formula for centripetal acceleration:
 
-1. **Set up the Equilateral Triangle:**
-   Lagrange point L5 is located in an equilateral triangle formed by the Earth, Moon, and L5. The side lengths of this triangle are equal to the distance between the Earth and the Moon (\(R_{\text{earth-moon}}\)).
+\[ \omega = \sqrt{\frac{G \times (M_{\text{Moon}} + \text{moonlet\_mass})}{r_{L5}^3}} \]
 
-2. **Define Coordinates:**
-   Let \(x_{\text{L5}}\) be the x-coordinate of Lagrange point L5, and \(y_{\text{L5}}\) be the y-coordinate.
+Where:
+- \( G \) is the gravitational constant.
+- \( M_{\text{Moon}} \) is the mass of the Moon.
+- \(\text{moonlet\_mass}\) is the mass of the object at Lagrange Point 5.
 
-3. **Position within the Triangle:**
-   - \(x_{\text{L5}}\) is half the distance between the Earth and the Moon in the negative x-direction.
-   - \(y_{\text{L5}}\) is \(\frac{\sqrt{3}}{2}\) times the distance between the Earth and the Moon in the positive y-direction.
+Other orbital parameters can be derived from the angular velocity:
+- Orbital period (\( T \)) is given by \( T = \frac{2 \pi}{\omega} \).
+- Orbital speed (\( v \)) is given by \( v = \omega \times r_{L5} \).
 
-   Mathematically:
-   \[ x_{\text{L5}} = -\frac{1}{2} R_{\text{earth-moon}} \]
-   \[ y_{\text{L5}} = \frac{\sqrt{3}}{2} R_{\text{earth-moon}} \]
-
-4. **Result:**
-   The coordinates \((x_{\text{L5}}, y_{\text{L5}})\) represent the location of Lagrange point L5 within the equilateral triangle.
+In summary, the provided Python code defines functions to calculate the coordinates of Lagrange Point 5 and various orbital parameters at that location based on the mass of the moonlet and the distance between the Earth and the Moon.
