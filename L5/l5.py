@@ -8,8 +8,8 @@ R_earth_moon = 3.84e8  # Distance between Earth and Moon in meters
 
 # Function to calculate Lagrange point L5 location
 def lagrange_point_l5_location():
-    x_l5 = -0.5 * R_earth_moon
-    y_l5 = (np.sqrt(3) / 2) * R_earth_moon
+    x_l5 = 0.5 * R_earth_moon
+    y_l5 = -np.sqrt(3) / 2 * R_earth_moon
     return x_l5, y_l5
 
 # Function to calculate orbital parameters at Lagrange point L5
