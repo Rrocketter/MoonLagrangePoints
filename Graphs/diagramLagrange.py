@@ -7,6 +7,7 @@ circle = mpath.Path.unit_circle()
 wedge_1 = mpath.Path.wedge(90, 180)
 wedge_2 = mpath.Path.wedge(270, 0)
 
+
 verts = np.concatenate([circle.vertices, wedge_1.vertices[::-1, ...], wedge_2.vertices[::-1, ...]])
 codes = np.concatenate([circle.codes, wedge_1.codes, wedge_2.codes])
 center_of_mass = mpath.Path(verts, codes)
