@@ -1,10 +1,9 @@
-# control
+# control group
 
 import numpy as np
 from scipy.integrate import odeint
 import csv
 
-# Constants
 G = 6.67e-11  # Gravitational constant in N * m^2 / kg^2
 M_earth = 5.97e24  # Mass of Earth in kg
 M_moon = 7.35e22  # Mass of Moon in kg

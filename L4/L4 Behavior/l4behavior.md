@@ -1,39 +1,43 @@
 1. **Gravitational Force Components:**
    - The function `gravitational_force` calculates the x and y components of the gravitational force acting on a celestial body at coordinates (x, y), influenced by two massive bodies (M1 and M2).
 
-   \[ F_x = -\frac{G \cdot M_1 \cdot x}{r^3} - \frac{G \cdot M_2 \cdot x}{r^3} \]
-   \[ F_y = -\frac{G \cdot M_1 \cdot y}{r^3} - \frac{G \cdot M_2 \cdot y}{r^3} \]
+  ![img.png](../../equationImages/L4%20behavior/img.png)
+
+   ![img_1.png](../../equationImages/L4%20behavior/img_1.png)
 
    Where:
-   - \( F_x \) and \( F_y \) are the x and y components of the gravitational force,
-   - \( G \) is the gravitational constant,
-   - \( M_1 \) and \( M_2 \) are the masses of the two celestial bodies,
-   - \( x \) and \( y \) are the coordinates of the celestial body,
-   - \( r \) is the distance between the celestial body and the two massive bodies.
+   - ![img_2.png](../../equationImages/L4%20behavior/img_2.png) and ![img_3.png](../../equationImages/L4%20behavior/img_3.png) are the x and y components of the gravitational force,
+   - ![img_4.png](../../equationImages/L4%20behavior/img_4.png) is the gravitational constant,
+   - ![img_5.png](../../equationImages/L4%20behavior/img_5.png) and ![img_6.png](../../equationImages/L4%20behavior/img_6.png) are the masses of the two celestial bodies,
+   - ![img_7.png](../../equationImages/L4%20behavior/img_7.png) and ![img_8.png](../../equationImages/L4%20behavior/img_8.png) are the coordinates of the celestial body,
+   - ![img_9.png](../../equationImages/L4%20behavior/img_9.png) is the distance between the celestial body and the two massive bodies.
 
 2. **Differential Equations (equations_of_motion):**
    - The function `equations_of_motion` defines the system of differential equations representing the motion of a celestial body influenced by gravitational forces.
 
-   \[ \frac{dx}{dt} = vx \]
-   \[ \frac{dy}{dt} = vy \]
-   \[ \frac{dvx}{dt} = \frac{F_x}{M} \]
-   \[ \frac{dvy}{dt} = \frac{F_y}{M} \]
+   ![img_10.png](../../equationImages/L4%20behavior/img_10.png)
+
+   ![img_11.png](../../equationImages/L4%20behavior/img_11.png)
+
+   ![img_12.png](../../equationImages/L4%20behavior/img_12.png)
+
+   ![img_13.png](../../equationImages/L4%20behavior/img_13.png)
 
    Where:
-   - \( x \) and \( y \) are the coordinates of the celestial body,
-   - \( vx \) and \( vy \) are the velocities in the x and y directions,
-   - \( F_x \) and \( F_y \) are the x and y components of the gravitational force calculated using `gravitational_force`,
-   - \( M \) is the mass of the celestial body.
+   - ![img_7.png](../../equationImages/L4%20behavior/img_7.png) and ![img_8.png](../../equationImages/L4%20behavior/img_8.png) are the coordinates of the celestial body,
+   - ![img_14.png](../../equationImages/L4%20behavior/img_14.png) and ![img_15.png](../../equationImages/L4%20behavior/img_15.png) are the velocities in the x and y directions,
+   - ![img_2.png](../../equationImages/L4%20behavior/img_2.png) and ![img_3.png](../../equationImages/L4%20behavior/img_3.png) are the x and y components of the gravitational force calculated using `gravitational_force`,
+   - ![img_16.png](../../equationImages/L4%20behavior/img_16.png) is the mass of the celestial body.
 
 3. **Lagrange Point L4 Location:**
    - The function `lagrange_point_l4_location` calculates the x and y coordinates of Lagrange point L4 based on the angle \(\theta\).
 
-   \[ x_{L4} = 0.5 \times R_{\text{earth-moon}} \times \cos(\theta) \]
-   \[ y_{L4} = \frac{\sqrt{3}}{2} \times R_{\text{earth-moon}} \times \sin(\theta) \]
+   ![img_17.png](../../equationImages/L4%20behavior/img_17.png)
+   ![img_18.png](../../equationImages/L4%20behavior/img_18.png)
 
    Where:
-   - \( R_{\text{earth-moon}} \) is the distance between Earth and Moon,
-   - \( \theta \) is the angle determining the position of Lagrange point L4.
+   - ![img_19.png](../../equationImages/L4%20behavior/img_19.png) is the distance between Earth and Moon,
+   - ![img_20.png](../../equationImages/L4%20behavior/img_20.png) is the angle determining the position of Lagrange point L4.
 
 4. **Simulation of Moonlet's Motion:**
    - The function `simulate_orbit` integrates the equations of motion using the `odeint` solver, simulating the motion of the moonlet.
