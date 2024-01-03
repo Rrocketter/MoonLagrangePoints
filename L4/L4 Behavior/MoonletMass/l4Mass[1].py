@@ -84,9 +84,7 @@ with open(output_file, 'w', newline='') as csvfile:
 
 print(f"Data has been saved to {output_file}.")
 
-# # Print header
 # print("Time (days) | Moon X Position (m) | Moon Y Position (m) | Moonlet X Position (m) | Moonlet Y Position (m) | L4 X Position (m) | L4 Y Position (m)")
 #
-# # Print data
 # for entry in moonlet_timeseries:
 #     print(f"{entry[0]:.2f} | {entry[1]:.2f} | {entry[2]:.2f} | {entry[3]:.2f} | {entry[4]:.2f} | {entry[5]:.2f} | {entry[6]:.2f}")
