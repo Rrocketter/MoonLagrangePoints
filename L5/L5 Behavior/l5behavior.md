@@ -2,38 +2,47 @@
 1. **Gravitational Force Components:**
    The gravitational force components between two masses \(M_1\) and \(M_2\) at positions \((x, y)\) and \((x', y')\) are given by:
 
-   \[ F_{x} = -\frac{G \cdot M_1 \cdot (x - x')}{r^3} - \frac{G \cdot M_2 \cdot (x - x')}{r^3} \]
-   \[ F_{y} = -\frac{G \cdot M_1 \cdot (y - y')}{r^3} - \frac{G \cdot M_2 \cdot (y - y')}{r^3} \]
+   ![img.png](img.png)
+   
+   ![img_1.png](img_1.png)
 
-   Where \(r\) is the distance between the masses given by \(r = \sqrt{(x - x')^2 + (y - y')^2}\).
+   Where ![img_2.png](img_2.png) is the distance between the masses given by ![img_3.png](img_3.png).
 
-   In the equations_of_motion function, these forces are used to calculate the accelerations (\(dvxdt\) and \(dvydt\)) acting on the Moonlet.
+   These forces are used to calculate the accelerations ![img_4.png](img_4.png) and ![img_5.png](img_5.png) acting on the Moonlet.
+
 
 2. **Equations of Motion:**
    The equations of motion for the Moonlet are given by the following set of ordinary differential equations (ODEs):
 
-   \[ \frac{dx}{dt} = vx \]
-   \[ \frac{dy}{dt} = vy \]
-   \[ \frac{dvx}{dt} = \frac{F_{x}}{M_2} \]
-   \[ \frac{dvy}{dt} = \frac{F_{y}}{M_2} \]
+   ![img_6.png](img_6.png)
 
-   These equations describe the position (\(x, y\)) and velocity (\(vx, vy\)) of the Moonlet over time. The odeint function is used to solve this system of ODEs numerically.
+   ![img_7.png](img_7.png)
+
+   ![img_8.png](img_8.png)
+
+   ![img_9.png](img_9.png)
+
+
+These equations describe the position ![img_10.png](img_10.png) and velocity ![img_11.png](img_11.png) of the Moonlet over time. The odeint function is used to solve this system of ODEs numerically.
+
 
 3. **Lagrange Point L5 Location:**
-   The location of Lagrange point L5 in the Earth-Moon system is given by the coordinates \((x_{L5}, y_{L5})\), where:
+   The location of Lagrange point L5 in the Earth-Moon system is given by the coordinates![img_12.png](img_12.png), where:
 
-   \[ x_{L5} = 0.5 \cdot R_{\text{earth-moon}} \cdot \cos(\theta) \]
-   \[ y_{L5} = -\frac{\sqrt{3}}{2} \cdot R_{\text{earth-moon}} \cdot \sin(\theta) \]
+   
+   ![img_13.png](img_13.png)
 
-   Here, \(\theta\) represents the angle that changes over time based on the Moon's orbital period. In the simulation, it's updated as:
+   ![img_15.png](img_15.png)
 
-   \[ \theta_{L5} += \frac{2 \pi \cdot \text{time\_step}}{27.3 \cdot 24 \cdot 3600} \]
+   Here, ![img_16.png](img_16.png) represents the angle that changes over time based on the Moon's orbital period. In the simulation, it's updated as:
+
+   ![img_18.png](img_18.png)
 
 4. **Simulation Loop:**
-   The main simulation loop iterates through time steps, updating the Moon's angle (\(\theta_{\text{moon}}\)), the Lagrange point L5's angle (\(\theta_{L5}\)), and solving the equations of motion to determine the Moonlet's position and velocity. 
+   The main simulation loop iterates through time steps, updating the Moon's angle ![img_21.png](img_21.png), the Lagrange point L5's angle ![img_22.png](img_22.png) and solving the equations of motion to determine the Moonlet's position and velocity. 
 
    The Moon's position is given by:
 
-   \[ x_{\text{moon}} = R_{\text{earth-moon}} \cdot \cos(\theta_{\text{moon}}) \]
-   \[ y_{\text{moon}} = R_{\text{earth-moon}} \cdot \sin(\theta_{\text{moon}}) \]
+![img_19.png](img_19.png)
 
+![img_20.png](img_20.png)
