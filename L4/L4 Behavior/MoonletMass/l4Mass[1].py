@@ -62,7 +62,7 @@ time_step_days = 1
 
 moonlet_timeseries = simulate_orbit(moonlet_mass, initial_distance_earth_moon, time_span_years, time_step_days)
 
-output_file = 'moonlet_orbit_data_Mass[1].csv'
+output_file = 'moonlet_data_Mass_L4[1].csv'
 
 with open(output_file, 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
