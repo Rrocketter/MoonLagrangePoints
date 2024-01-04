@@ -73,14 +73,14 @@ print(
 for entry in moonlet_timeseries:
     print(f"{entry[0]:} | {entry[1]:} | {entry[2]:} | {entry[3]:} | {entry[4]:} | {entry[5]:} | {entry[6]:}")
 
-# output_file = 'moonlet_orbit_data_Mass_L5[3].csv'
-#
-# with open(output_file, 'w', newline='') as csvfile:
-#     csv_writer = csv.writer(csvfile)
-#
-#     csv_writer.writerow(["Time (days)", "Moon X Position (m)", "Moon Y Position (m)", "Moonlet X Position (m)", "Moonlet Y Position (m)", "L5 X Position (m)", "L5 Y Position (m)"])
-#
-#     for entry in moonlet_timeseries:
-#         csv_writer.writerow(entry)
-#
-# print(f"Data has been saved to {output_file}.")
+output_file = 'moonlet_orbit_data_Mass_L5[3].csv'
+
+with open(output_file, 'w', newline='') as csvfile:
+    csv_writer = csv.writer(csvfile)
+
+    csv_writer.writerow(["Time (days)", "Moon X Position (m)", "Moon Y Position (m)", "Moonlet X Position (m)", "Moonlet Y Position (m)", "L5 X Position (m)", "L5 Y Position (m)"])
+
+    for entry in moonlet_timeseries:
+        csv_writer.writerow(entry)
+
+print(f"Data has been saved to {output_file}.")
