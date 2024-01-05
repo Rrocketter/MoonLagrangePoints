@@ -32,7 +32,9 @@
 3. **Lagrange Point L4 Location:**
    - The function `lagrange_point_l4_location` calculates the x and y coordinates of Lagrange point L4 based on the angle \(\theta\).
 
+
    ![img_17.png](../../equationImages/L4%20behavior/img_17.png)
+
    ![img_18.png](../../equationImages/L4%20behavior/img_18.png)
 
    Where:
