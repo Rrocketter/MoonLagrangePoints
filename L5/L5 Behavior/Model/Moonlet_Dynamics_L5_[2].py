@@ -32,27 +32,34 @@ def equations_of_motion(state, t, M1, M2, M3, M4):
     return [dx1dt, dy1dt, dvx1dt, dvy1dt, dx2dt, dy2dt, dvx2dt, dvy2dt]
 
 
-def lagrange_point_l5_location(theta):
+def lagrange_point_l5_location(theta, x1, y1, x2, y2, M1, M2):
     x_l5 = 0.5 * R_earth_moon * np.cos(theta)
     y_l5 = (np.sqrt(3) / 2) * R_earth_moon * np.sin(theta)
+
+    force_x1, force_y1 = gravitational_force(x_l5 - x1, y_l5 - y1, M_earth, M1)
+    force_x2, force_y2 = gravitational_force(x_l5 - x2, y_l5 - y2, M_earth, M2)
+
+    x_l5 += force_x1 + force_x2
+    y_l5 += force_y1 + force_y2
+
     return x_l5, y_l5
 
 
 def simulate_orbit(moonlet_mass1, moonlet_mass2, initial_distance_earth_moon, time_span, time_step):
-    theta_moon = 0  # Initial angle for Moon's position
-    theta_l5 = np.pi  # Initial angle for Lagrange point L5 (opposite direction of L4)
+    theta_moon = 0  # moon angle
+    theta_l5 = np.pi  #l5 angle
 
     initial_state = [R_earth_moon + initial_distance_earth_moon, 0, 0, 2 * np.pi * R_earth_moon / (27.3 * 24 * 3600),
                      R_earth_moon + initial_distance_earth_moon + 1e7, 0, 0,
-                     2 * np.pi * R_earth_moon / (27.3 * 24 * 3600)]  # Initial positions and velocities
+                     2 * np.pi * R_earth_moon / (27.3 * 24 * 3600)] 
 
-    times = np.arange(0, time_span * 365, time_step)  # Time span is in years, convert to days
+    times = np.arange(0, time_span * 365, time_step)  # time span (years -> days)
 
     moonlet_timeseries = []
 
     for t in times:
-        theta_moon = (2 * np.pi * t) / (27.3 * 24 * 3600)  # Update Moon's angle based on its orbital period
-        x_l5, y_l5 = lagrange_point_l5_location(theta_l5)
+        theta_moon = (2 * np.pi * t) / (27.3 * 24 * 3600)  
+        x_l5, y_l5 = lagrange_point_l5_location(theta_l5, initial_state[0], initial_state[1], initial_state[4], initial_state[5], moonlet_mass1, moonlet_mass2)
 
         state = odeint(equations_of_motion, initial_state, [0, time_step],
                        args=(M_earth, moonlet_mass1, M_earth, moonlet_mass2))
@@ -66,7 +73,7 @@ def simulate_orbit(moonlet_mass1, moonlet_mass2, initial_distance_earth_moon, ti
         moonlet_timeseries.append(moonlet_positions)
 
         theta_l5 += 2 * np.pi * time_step / (
-                    27.3 * 24 * 3600)  # Update Lagrange point L5's angle based on Moon's orbital period
+                    27.3 * 24 * 3600)  
 
     return moonlet_timeseries
 
@@ -85,7 +92,7 @@ print(
 
 for entry in moonlet_timeseries:
     print(
-        f"{entry[0]:.2f} | {entry[1]:.2f} | {entry[2]:.2f} | {entry[3]:.2f} | {entry[4]:.2f} | {entry[5]:.2f} | {entry[6]:.2f} | {entry[7]:.2f} | {entry[8]:.2f}")
+        f"{entry[0]} | {entry[1]} | {entry[2]} | {entry[3]} | {entry[4]} | {entry[5]} | {entry[6]} | {entry[7]} | {entry[8]}")
 
 output_file = 'moonlet_data_dynamic_L5[2].csv'
 
