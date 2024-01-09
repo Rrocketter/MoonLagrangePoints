@@ -69,7 +69,7 @@ def simulate_orbit(moonlet_mass1, moonlet_mass2, initial_distance_earth_moon, ti
         y_moon = R_earth_moon * np.sin(theta_moon)
 
         moonlet_positions = [t, x_moon, y_moon, initial_state[0], initial_state[1], initial_state[4], initial_state[5],
-                             x_l5, y_l5]
+                             abs(x_l5), abs(y_l5)]
         moonlet_timeseries.append(moonlet_positions)
 
         theta_l5 += 2 * np.pi * time_step / (
@@ -99,7 +99,7 @@ output_file = 'moonlet_data_dynamic_L5[2].csv'
 with open(output_file, 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
 
-    csv_writer.writerow(["Time (days)", "Moon X Position (m)", "Moon Y Position (m)", "Moonlet1 X Position (m))",  "Moonlet1 Y Position (m)", "Moonlet2 X Position (m)","Moonlet2 Y Position (m)", "L4 X Position (m)", "L4 Y Position (m)"])
+    csv_writer.writerow(["Time (days)", "Moon X Position (m)", "Moon Y Position (m)", "Moonlet1 X Position (m))",  "Moonlet1 Y Position (m)", "Moonlet2 X Position (m)","Moonlet2 Y Position (m)", "L5 X Position (m)", "L5 Y Position (m)"])
 
     for entry in moonlet_timeseries:
         time, moon_x, moon_y, moonlet1_x, moonlet1_y, moonlet2_x, moonlet2_y, l4_x, l4_y = entry
