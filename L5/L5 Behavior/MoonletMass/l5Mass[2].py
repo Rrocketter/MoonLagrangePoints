@@ -22,14 +22,21 @@ def equations_of_motion(state, t, M1, M2):
     dvydt = force_y / M2
     return [dxdt, dydt, dvxdt, dvydt]
 
-def lagrange_point_l5_location(theta):
-    x_l5 = 0.5 * R_earth_moon * np.cos(theta)
-    y_l5 = -(np.sqrt(3) / 2) * R_earth_moon * np.sin(theta)
+def lagrange_point_l5_location(theta_l5, x_earth, y_earth, x_moon, y_moon, x_moonlet, y_moonlet, moonlet_mass):
+    R_earth_moon = np.sqrt((x_moon - x_earth)**2 + (y_moon - y_earth)**2)
+    R_earth_moonlet = np.sqrt((x_moonlet - x_earth)**2 + (y_moonlet - y_earth)**2)
+
+    x_l5 = x_earth + R_earth_moon * np.cos(theta_l5) + moonlet_mass / M_earth * R_earth_moonlet * np.cos(theta_l5)
+    y_l5 = y_earth + R_earth_moon * np.sin(theta_l5) + moonlet_mass / M_earth * R_earth_moonlet * np.sin(theta_l5)
+
     return x_l5, y_l5
 
 def simulate_orbit(moonlet_mass, initial_distance_earth_moon, time_span, time_step):
     theta_moon = 0  #moon angle
     theta_l5 = 0  # L5 angle
+
+    x_earth = 0
+    y_earth = 0
 
     initial_state = [R_earth_moon + initial_distance_earth_moon, 0, 0, 2 * np.pi * R_earth_moon / (27.3 * 24 * 3600)]  # Initial position at Moon's location with Moon's orbital velocity
     times = np.arange(0, time_span * 365, time_step)  # time span => days
@@ -38,15 +45,19 @@ def simulate_orbit(moonlet_mass, initial_distance_earth_moon, time_span, time_st
 
     for t in times:
         theta_moon = (2 * np.pi * t) / (27.3 * 24 * 3600)  # Update Moon's angle based on its orbital period
-        x_l5, y_l5 = lagrange_point_l5_location(theta_l5)
-
-        state = odeint(equations_of_motion, initial_state, [0, time_step], args=(M_earth, moonlet_mass))
-        initial_state = state[-1, :]
 
         x_moon = R_earth_moon * np.cos(theta_moon)
         y_moon = R_earth_moon * np.sin(theta_moon)
 
-        moonlet_positions = [t, x_moon, y_moon, initial_state[0], initial_state[1], x_l5, y_l5]
+        state = odeint(equations_of_motion, initial_state, [0, time_step], args=(M_earth, moonlet_mass))
+        initial_state = state[-1, :]
+
+        x_moonlet = initial_state[0]
+        y_moonlet = initial_state[1]
+
+        x_l5, y_l5 = lagrange_point_l5_location(theta_l5, x_earth, y_earth, x_moon, y_moon, x_moonlet, y_moonlet, moonlet_mass)
+
+        moonlet_positions = [t, x_moon, y_moon, x_moonlet, y_moonlet, x_l5, y_l5]
         moonlet_timeseries.append(moonlet_positions)
 
         theta_l5 += 2 * np.pi * time_step / (27.3 * 24 * 3600)  # Update Lagrange point L5's angle based on Moon's orbital period
