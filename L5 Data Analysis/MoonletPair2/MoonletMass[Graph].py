@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-data1 = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L5/L5 Behavior/MoonletMass/moonlet_orbit_data_Mass_L5[2].csv')
-dynamic = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L5/L5 Behavior/Model/moonlet_data_dynamic_L5[1].csv')
+data1 = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L5/L5 Behavior/MoonletMass/moonlet_orbit_data_Mass_L5[3].csv')
+dynamic = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L5/L5 Behavior/Model/moonlet_data_dynamic_L5[2].csv')
 control = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L5/L5 Behavior/MoonletMass/moonlet_orbit_data_Mass_L5[1].csv')
 
 data1_L5X = data1["L5 X Position (m)"]
@@ -45,7 +45,7 @@ plt.xticks(x_pos, labels)
 
 plt.xlabel('')
 plt.ylabel('Mean Position (m)')
-plt.title('Moonlet Pair 1 - L5 Position')
+plt.title('Moonlet Pair 2 - L5 Position')
 
 plt.legend()
 
