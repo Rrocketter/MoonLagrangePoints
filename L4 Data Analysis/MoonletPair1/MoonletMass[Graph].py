@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-data1 = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L4/L4 Behavior/MoonletMass/moonlet_data_Mass_L4[2].csv')
-dynamic = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L4/L4 Behavior/Model/moonlet_data_dynamic_L4[1].csv')
-control = pd.read_csv('/Users/rahulgupta/Research Project/Research Project Code/L4/L4 Behavior/MoonletMass/moonlet_data_Mass_L4[1].csv')
+data1 = pd.read_csv('/Research Project Code/L4/L4-Behavior/MoonletMass/moonlet_data_Mass_L4[2].csv')
+dynamic = pd.read_csv('/Research Project Code/L4/L4-Behavior/Model/moonlet_data_dynamic_L4[1].csv')
+control = pd.read_csv('/Research Project Code/L4/L4-Behavior/MoonletMass/moonlet_data_Mass_L4[1].csv')
 
 data1_L4X = data1["L4 X Position (m)"]
 data1_L4Y = data1["L4 Y Position (m)"]
@@ -21,7 +21,7 @@ std_devs_X = [control_L4X.std(), data1_L4X.std(), dynamic_L4X.std()]
 means_Y = [control_L4Y.mean(), data1_L4Y.mean(), dynamic_L4Y.mean()]
 std_devs_Y = [control_L4Y.std(), data1_L4Y.std(), dynamic_L4Y.std()]
 
-labels = ['Control', 'Moonlet Mass 5e25kg', 'Dynamic Moonlet Pair']
+labels = ['Control', 'Moonlet Mass 5e25kg', 'Moonlet Pair 1']
 
 x_pos = np.arange(len(labels))
 

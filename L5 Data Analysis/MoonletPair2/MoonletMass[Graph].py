@@ -21,7 +21,7 @@ std_devs_X = [control_L5X.std(), data1_L5X.std(), dynamic_L5X.std()]
 means_Y = [control_L5Y.mean(), data1_L5Y.mean(), dynamic_L5Y.mean()]
 std_devs_Y = [control_L5Y.std(), data1_L5Y.std(), dynamic_L5Y.std()]
 
-labels = ['Control', 'Moonlet Mass 5e25kg', 'Dynamic Moonlet Pair']
+labels = ['Control', 'Moonlet Mass 5e25kg', 'Moonlet Pair 2']
 
 x_pos = np.arange(len(labels))
 
